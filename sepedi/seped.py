@@ -57,9 +57,9 @@ def create_text_file(file_path, lines):
 
 
 def main():
-    input_file = "./input/Sepedi.txt"
-    sepedi_clean_text_file = "sepedi_clean_text.txt"
-    sepedi_text_with_numbers_file = "sepedi_text_with_numbers.txt"
+    input_file = "./Sepedi/Sepedi.txt"
+    sepedi_clean_text_file = "./Sepedi/sepedi_clean_text.txt"
+    sepedi_text_with_numbers_file = "./Sepedi/sepedi_text_with_numbers.txt"
 
     # Step 1: Data Reading
     input_lines = read_text_file(input_file)
