@@ -10,8 +10,8 @@ def separate_text(input_file):
         sepedi_without_num = []
 
         for row in reader:
-            src_text = row[0].strip()
-            tgt_text = row[1].strip()
+            src_text = row[0].strip().replace('"', '')  # Remove quotation marks
+            tgt_text = row[1].strip().replace('"', '')  # Remove quotation marks
 
             # setswana sentences (first sentence)
             if row[0].startswith('"') and row[1].startswith('"'):
