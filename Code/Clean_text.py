@@ -1,7 +1,7 @@
 import re
 
 def clean_text(input_file, output_dir):
-    with open(input_file, 'r', encoding='utf-8') as file:
+    with open(input_file, 'r', encoding='latin-1') as file:
         content = file.read()
     
     # Spliting content into sentences
@@ -29,18 +29,18 @@ def clean_text(input_file, output_dir):
             clean_sentences.append(cleaned_sentence)
 
     # Separate output files
-    with open(output_dir + '/nonsensical_sentences.txt', 'w', encoding='utf-8') as file:
+    with open(output_dir + '/nonsensical_StudyGuide_Sotho.txt', 'w', encoding='utf-8') as file:
         file.write('\n'.join(nonsensical_sentences))
 
-    with open(output_dir + '/sentences_with_numbers.txt', 'w', encoding='utf-8') as file:
+    with open(output_dir + '/sentences_with_numbers_StudyGuide_Sotho.txt', 'w', encoding='utf-8') as file:
         file.write('\n'.join(sentences_with_numbers))
 
-    with open(output_dir + '/clean_sentences.txt', 'w', encoding='utf-8') as file:
+    with open(output_dir + '/clean_sentences_StudyGuide_Sotho.txt', 'w', encoding='utf-8') as file:
         file.write('\n'.join(clean_sentences))
 
     print("Files created successfully!")
 
-input_file = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Scrapped_data\SeSotho_urgent_.txt"
+input_file = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Scrapped_data\Studyguide_Sotho.txt"
 output_directory = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Clean_data\SeSotho"
 
 clean_text(input_file, output_directory)
