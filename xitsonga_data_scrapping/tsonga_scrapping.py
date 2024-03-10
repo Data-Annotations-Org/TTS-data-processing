@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def scrape_article_content(article_url):
+def  scrape_tsonga_article_content(article_url):
     try:
         # Send a GET request to the article URL
         response = requests.get(article_url)
@@ -11,20 +11,17 @@ def scrape_article_content(article_url):
         soup = BeautifulSoup(response.text, 'html.parser')
 
         # Find the main content of the article
-        article_content = soup.find('div', class_='article-body')  # Adjust class name as per the website's HTML structure
+        main_content = soup.find('div', class_='article-content')  # Adjust class name as per the website's HTML structure
 
         # Extract text from the main content
-        article_text = article_content.get_text(separator='\n')
+        article_text = main_content.get_text(separator='\n')
 
-        # Clean the text: remove extra whitespace and empty lines
-        cleaned_text = '\n'.join(line.strip() for line in article_text.split('\n') if line.strip())
-
-        return cleaned_text
+        return article_text
     except Exception as e:
         print(f"Error scraping article content: {e}")
         return None
 
-def write_to_file(article_text, file_name):
+def output_file(article_text, file_name):
     try:
         # Write the article text to a new text file
         with open(file_name, 'w', encoding='utf-8') as file:
@@ -41,11 +38,11 @@ def main():
     file_name = "article_content.txt"
 
     # Scrape article content
-    article_text = scrape_article_content(article_url)
+    article_text = scrape_tsonga_article_content(article_url)
 
     if article_text:
         # Write article content to a text file
-        write_to_file(article_text, file_name)
+        output_file(article_text, file_name)
 
 if __name__ == "__main__":
     main()
