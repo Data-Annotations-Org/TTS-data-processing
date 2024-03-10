@@ -11,12 +11,15 @@ def scrape_article_content(article_url):
         soup = BeautifulSoup(response.text, 'html.parser')
 
         # Find the main content of the article
-        main_content = soup.find('div', class_='article-content')  # Adjust class name as per the website's HTML structure
+        article_content = soup.find('div', class_='article-body')  # Adjust class name as per the website's HTML structure
 
         # Extract text from the main content
-        article_text = main_content.get_text(separator='\n')
+        article_text = article_content.get_text(separator='\n')
 
-        return article_text
+        # Clean the text: remove extra whitespace and empty lines
+        cleaned_text = '\n'.join(line.strip() for line in article_text.split('\n') if line.strip())
+
+        return cleaned_text
     except Exception as e:
         print(f"Error scraping article content: {e}")
         return None
