@@ -18,7 +18,7 @@ output_file_path = "article_context.txt"
 with open(output_file_path, "w", encoding="utf-8") as output_file:
     # Iterate through each article
     for article in article_containers:
-        # Check if there's a "Read More" button
+        # Checking if there is a "Read More" button
         read_more_button = article.find('a', class_='more-link')
         if read_more_button:
             read_more_url = read_more_button['href']
