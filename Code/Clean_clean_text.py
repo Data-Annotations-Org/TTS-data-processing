@@ -35,8 +35,8 @@ def clean_file(input_file, output_file):
             file.write(line + '\n')
 
 # Input and output file paths
-input_file_path = r'C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Clean_data\SeSotho\clean_sentences_Drama_Sotho.txt'
-output_file_path = r'C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Clean_data\SeSotho\clean_sentences_Drama_Sotho.txt'
+input_file_path = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Clean_data\SePedi\clean_sentences.txt"
+output_file_path = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Clean_data\SePedi\clean_sentences.txt"
 
 # Clean the file
 clean_file(input_file_path, output_file_path)

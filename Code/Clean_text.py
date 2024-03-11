@@ -40,7 +40,7 @@ def clean_text(input_file, output_dir):
 
     print("Files created successfully!")
 
-input_file = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Scrapped_data\Drama_Sotho.txt"
-output_directory = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Clean_data\SeSotho"
+input_file = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Scrapped_data\Seipo_Pedi.txt"
+output_directory = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Clean_data\SePedi"
 
 clean_text(input_file, output_directory)
