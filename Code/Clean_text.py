@@ -29,13 +29,13 @@ def clean_text(input_file, output_dir):
             clean_sentences.append(cleaned_sentence)
 
     # Separate output files
-    with open(output_dir + '/nonsensical_Drama_Sotho.txt', 'w', encoding='utf-8') as file:
+    with open(output_dir + '/nonsensical.txt', 'w', encoding='utf-8') as file:
         file.write('\n'.join(nonsensical_sentences))
 
-    with open(output_dir + '/sentences_with_numbers_Drama_Sotho.txt', 'w', encoding='utf-8') as file:
+    with open(output_dir + '/sentences_with_numbers.txt', 'w', encoding='utf-8') as file:
         file.write('\n'.join(sentences_with_numbers))
 
-    with open(output_dir + '/clean_sentences_Drama_Sotho.txt', 'w', encoding='utf-8') as file:
+    with open(output_dir + '/clean_sentences.txt', 'w', encoding='utf-8') as file:
         file.write('\n'.join(clean_sentences))
 
     print("Files created successfully!")
