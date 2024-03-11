@@ -1,48 +1,35 @@
 import requests
 from bs4 import BeautifulSoup
 
-def  scrape_tsonga_article_content(article_url):
-    try:
-        # Send a GET request to the article URL
-        response = requests.get(article_url)
-        response.raise_for_status()
+# URL of website
+url = "https://www.nthavela.co.za/category/health/"
 
-        # Parse the HTML content of the article
-        soup = BeautifulSoup(response.text, 'html.parser')
+# Make a GET request to fetch the web page
+response = requests.get(url)
 
-        # Find the main content of the article
-        main_content = soup.find('div', class_='article-content')  # Adjust class name as per the website's HTML structure
 
-        # Extract text from the main content
-        article_text = main_content.get_text(separator='\n')
+soup = BeautifulSoup(response.content, 'html.parser')
 
-        return article_text
-    except Exception as e:
-        print(f"Error scraping article content: {e}")
-        return None
+# Find all article containers 
+article_containers = soup.find_all('article')
 
-def output_file(article_text, file_name):
-    try:
-        # Write the article text to a new text file
-        with open(file_name, 'w', encoding='utf-8') as file:
-            file.write(article_text)
-        print(f"Article content has been written to '{file_name}' successfully.")
-    except Exception as e:
-        print(f"Error writing to file: {e}")
+# Create a text file to store the output
+output_file_path = "article_context.txt"
+with open(output_file_path, "w", encoding="utf-8") as output_file:
+    # Iterate through each article
+    for article in article_containers:
+        # Check if there's a "Read More" button
+        read_more_button = article.find('a', class_='more-link')
+        if read_more_button:
+            read_more_url = read_more_button['href']
+            read_more_response = requests.get(read_more_url)
+            read_more_soup = BeautifulSoup(read_more_response.content, 'html.parser')
 
-def main():
-    # URL of the article to scrape
-    article_url = "https://www.nthavela.co.za/category/health/"  # Replace with the actual URL of the article
+            # Extracting the paragraphs in the article
+            paragraphs = read_more_soup.find_all('p')
+            for paragraph in paragraphs:
+                output_file.write(paragraph.text.strip() + "\n")
 
-    # Name of the output text file
-    file_name = "article_content.txt"
+            output_file.write("\n" + "=" * 50 + "\n") 
 
-    # Scrape article content
-    article_text = scrape_tsonga_article_content(article_url)
-
-    if article_text:
-        # Write article content to a text file
-        output_file(article_text, file_name)
-
-if __name__ == "__main__":
-    main()
+print("Output saved to:", output_file_path)
