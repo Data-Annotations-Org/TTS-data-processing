@@ -1,7 +1,7 @@
 import re
 
 def clean_text(input_file, output_dir):
-    with open(input_file, 'r', encoding='latin-1') as file:
+    with open(input_file, 'r', encoding='utf-8') as file:
         content = file.read()
     
     # Spliting content into sentences
@@ -40,7 +40,7 @@ def clean_text(input_file, output_dir):
 
     print("Files created successfully!")
 
-input_file = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Scrapped_data\Seipo_Pedi.txt"
-output_directory = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Clean_data\SePedi"
+input_file = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Scrapped_data\Xitsonga_1.txt"
+output_directory = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Clean_data\Xitsonga"
 
 clean_text(input_file, output_directory)
