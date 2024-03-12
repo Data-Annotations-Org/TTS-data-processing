@@ -19,6 +19,6 @@ def remove_duplicates(input_file, output_file):
         print(f"An error occurred: {str(e)}")
 
 # Example usage:
-input_file = r'C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Clean_data\SeSotho\clean_sentences_Drama_Sotho.txt'
-output_file = r'C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Clean_data\SeSotho\clean_sentences_Drama_Sotho.txt'
+input_file = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Scrapped_data\Xitsonga_1.txt"
+output_file = r"C:\Users\thand\OneDrive\Documents\Botlale Ai\Data_Processing\TTS-data-processing\Scrapped_data\Xitsonga_1.txt"
 remove_duplicates(input_file, output_file)
