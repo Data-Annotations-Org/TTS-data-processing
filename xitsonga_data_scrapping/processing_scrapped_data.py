@@ -20,33 +20,6 @@ def clean_text(text):
     return text
 
 
-def categorize_sentences(sentences):
-    clean_text = []
-    text_with_numbers = []
-
-    for sentence in sentences:
-        sentence = sentence.strip()
-        if sentence:
-            if any(char.isdigit() for char in sentence) and any(char.isalpha() for char in sentence):
-                text_with_numbers.append(sentence)
-            elif is_coherent(sentence):
-                clean_text.append(sentence)
-
-    categorized_text = []
-    categorized_text.append("Clean Text:")
-    categorized_text.extend(clean_text)
-    categorized_text.append("\nText with Numbers:")
-    categorized_text.extend(text_with_numbers)
-
-    return categorized_text
-
-
-def is_coherent(sentence):
-    # For simplicity, let's assume any sentence with less than 3 words is nonsensical
-    words = sentence.split()
-    return len(words) >= 3
-
-
 def create_text_file(file_path, lines):
     try:
         with open(file_path, 'w', encoding="utf-8") as file:
@@ -57,9 +30,8 @@ def create_text_file(file_path, lines):
 
 
 def main():
-    input_file = "./xitsonga_data_scrapping/article_context.txt"
-    clean_text_file = "./xitsonga_data_scrapping/clean_text.txt"
-    text_with_numbers_file = "./xitsonga_data_scrapping/text_with_numbers.txt"
+    input_file = "./xitsonga_data_scrapping/scrapped_article.txt"
+    xitsonga_clean_text_file = "./xitsonga_data_scrapping/xitsonga_clean_text.txt"
 
     # Step 1: Data Reading
     input_lines = read_text_file(input_file)
@@ -67,14 +39,10 @@ def main():
     # Step 2: Cleaning
     cleaned_lines = [clean_text(line) for line in input_lines]
 
-    # Step 3: Organization
-    categorized_text = categorize_sentences(cleaned_lines)
+    # Step 3: File Creation
+    create_text_file(xitsonga_clean_text_file, cleaned_lines)
 
-    # Step 4: File Creation
-    create_text_file(clean_text_file, categorized_text[1:categorized_text.index("\nText with Numbers:")])
-    create_text_file(text_with_numbers_file, categorized_text[categorized_text.index("\nText with Numbers:") + 1:])
-
-    print("Files created successfully.")
+    print("Clean text file created successfully.")
 
 
 if __name__ == "__main__":
