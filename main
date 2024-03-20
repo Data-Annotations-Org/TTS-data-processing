@@ -1,0 +1,58 @@
+from scrapper import  *
+from processor import *
+
+def main():
+    
+    #Article languages
+    languages = ["tsonga","zulu","english","venda","sepedi"]
+    urls = ["https://www.nthavela.co.za/category","https://www.isolezwe.co.za/","https://www.news24.com",
+            "https://www.limpopomirror.co.za","https://seiponemadireng.co.za/"]
+    tsongaUrlPages =  ["lifestyle", "health","news","sports"]
+    zuluUrlPages = ["ezemidlalo", "izindaba","ezokungcebeleka","imibono"]
+    englishUrlPages = ["sport/topstories", "news24/power-crisis","news24/health","news24/elections","news24/sport"]
+    vendaUrlPages = ["articles/venda","articles/venda?&p671=2","articles/venda?&p671=3","articles/venda?&p671=4","articles/venda?&p671=5"]
+    sepediUrlPages = ["sports"]
+    for language in languages:
+        scrappedFileName = f"{language}_scrapped_article.txt"
+        input_lines : any
+        cleanedFile = f"{language}_cleaned_article.txt"
+        cleaned_lines :any
+        if language == "tsonga" :
+            articleDataProcessingMethodOne(tsongaUrlPages,urls[0],scrappedFileName,language)
+            input_lines = read_text_file(scrappedFileName)
+            cleaned_lines = [clean_text(line) for line in input_lines]     
+            create_text_file(cleanedFile,cleaned_lines)
+            print(f"{language} clean text file created successfully.") 
+
+        if language == "zulu" :
+            articleDataProcessingMethodTwo(zuluUrlPages,urls[1],scrappedFileName,language)
+            input_lines = read_text_file(scrappedFileName)
+            cleaned_lines = [clean_text(line) for line in input_lines]     
+            create_text_file(cleanedFile,cleaned_lines)
+            print(f"{language} clean text file created successfully.")
+        
+        if language == "venda" :
+            articleDataProcessingMethodFour(vendaUrlPages,urls[3],scrappedFileName,language)
+            input_lines = read_text_file(scrappedFileName)
+            cleaned_lines = [clean_text(line) for line in input_lines]     
+            create_text_file(cleanedFile,cleaned_lines)
+            print(f"{language} clean text file created successfully.") 
+        
+        """ if language == "sepedi" :
+            articleDataProcessingMethodFive(sepediUrlPages,urls[4],scrappedFileName,language)
+            input_lines = read_text_file(scrappedFileName)
+            cleaned_lines = [clean_text(line) for line in input_lines]     
+            create_text_file(cleanedFile,cleaned_lines)
+            print(f"{language} clean text file created successfully.") 
+        
+         if language == "english" :
+            articleDataProcessingMethodThree(englishUrlPages,urls[2],scrappedFileName,language)
+            input_lines = read_text_file(scrappedFileName)
+            cleaned_lines = [clean_text(line) for line in input_lines]     
+            create_text_file(cleanedFile,cleaned_lines)
+            print(f"{language} clean text file created successfully.") """
+
+if __name__ == "__main__":
+ main()
+
+
